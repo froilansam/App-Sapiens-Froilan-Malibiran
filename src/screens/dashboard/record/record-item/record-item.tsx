@@ -8,7 +8,7 @@ import numeral from 'numeral';
 import { Wallet } from '../../../../store/wallet-store';
 import { CATEGORIES } from '../../../../global/categories';
 import { PickerInterface } from '../../../../global/components/picker/picker.interfaces';
-import { THEME } from '../../../../global/theme';
+import { useTheme } from 'styled-components';
 
 import { INCOME } from '../../accounts/accounts.config';
 
@@ -38,6 +38,7 @@ const RecordItem = ({
 		(category: PickerInterface): boolean =>
 			category.name === wallet.category,
 	);
+	const theme = useTheme();
 
 	/**
 	 * @description Long press handler
@@ -79,13 +80,13 @@ const RecordItem = ({
 					{selectedCategory?.type === 'MaterialCommunityIcon' ? (
 						<MaterialCommunityIcons
 							name={selectedCategory?.icon || ''}
-							color={THEME.iconColor}
+							color={theme.iconColor}
 							size={15}
 						/>
 					) : (
 						<FontAwesome5Icon
 							name={selectedCategory?.icon || ''}
-							color={THEME.iconColor}
+							color={theme.iconColor}
 							size={15}
 						/>
 					)}

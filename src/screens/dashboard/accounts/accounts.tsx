@@ -13,6 +13,7 @@ import { DATE_FORMAT } from '../../../global/format';
 import { PICKER } from '../../../global/route-names';
 import { NavigationInterface } from '../../../global/interfaces/navigation-interface';
 import { RootStoreContext } from '../../../store/root-store';
+import { useTheme } from 'styled-components';
 
 import {
 	AccountsCard,
@@ -55,6 +56,7 @@ const Accounts = observer(
 		const [date] = useState(moment().format(DATE_FORMAT));
 		const modalizeRef = useRef<Modalize>(null);
 		const isIncome = transactionType === INCOME;
+		const theme = useTheme();
 		// Wallet Store
 		const { walletStore } = useContext(RootStoreContext);
 		const { addWallet } = walletStore;
@@ -138,7 +140,7 @@ const Accounts = observer(
 					<PickerText>{pickerValue}</PickerText>
 					<MaterialCommunityIcons
 						name={ICONS.arrow_right}
-						color={THEME.borderColor}
+						color={theme.iconColor}
 						size={30}
 					/>
 				</PickerTextView>
@@ -149,10 +151,10 @@ const Accounts = observer(
 			<>
 				<AccountsView>
 					<AccountsCard onPress={onOpen}>
-						<AccountsIcon color={THEME.incomeColor}>
+						<AccountsIcon color={theme.incomeColor}>
 							<FontAwesome5
 								name={ICONS.plus}
-								color={THEME.iconColor}
+								color={theme.iconColor}
 								size={20}
 							/>
 						</AccountsIcon>
@@ -161,7 +163,7 @@ const Accounts = observer(
 				</AccountsView>
 				<Modalize
 					ref={modalizeRef}
-					modalStyle={{ backgroundColor: THEME.background }}
+					modalStyle={{ backgroundColor: theme.background }}
 					modalHeight={550}
 				>
 					<ModalTextView>

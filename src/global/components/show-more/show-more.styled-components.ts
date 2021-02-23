@@ -3,8 +3,8 @@
  */
 import styled from 'styled-components/native';
 
-import { THEME } from '../../../global/theme';
 import normalize from '../../../utils/normalizeText';
+import { ThemePropsInterface } from '../../interfaces/theme-interface';
 
 export const ShowMoreView = styled.TouchableOpacity`
 	flex-direction: row;
@@ -15,7 +15,7 @@ export const ShowMoreView = styled.TouchableOpacity`
 `;
 
 export const ShowMoreText = styled.Text`
-	color: ${THEME.linkColor};
+	color: ${({ theme }: ThemePropsInterface): string => theme.linkColor};
 	font-size: ${normalize(12)}px;
 	font-weight: bold;
 `;

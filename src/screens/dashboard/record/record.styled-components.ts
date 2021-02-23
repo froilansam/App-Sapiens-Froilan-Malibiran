@@ -9,6 +9,7 @@ import {
 import styled from 'styled-components/native';
 
 import { ColorInterface } from '../../../global/interfaces/color-interface';
+import { ThemePropsInterface } from '../../../global/interfaces/theme-interface';
 import { THEME } from '../../../global/theme';
 import normalize from '../../../utils/normalizeText';
 
@@ -20,7 +21,8 @@ export const RecordView: FC<ViewProps> = styled.View`
 `;
 
 export const RecordCard: FC<ViewProps> = styled.View`
-	background-color: ${THEME.cardColor};
+	background-color: ${({ theme }: ThemePropsInterface): string =>
+		theme.cardColor};
 	border-radius: 10px;
 	margin-vertical: 10px;
 	align-items: flex-start;
@@ -62,7 +64,7 @@ export const RecordCategoryFlex: FC<ViewProps> = styled.View`
 
 export const RecordCategoryText: FC<TextProps> = styled.Text`
 	font-size: ${normalize(11)}px;
-	color: ${THEME.textColor};
+	color: ${({ theme }: ThemePropsInterface): string => theme.textColor};
 `;
 export const RecordDetailsFlex: FC<ViewProps> = styled.View`
 	justify-content: flex-start;
@@ -71,13 +73,16 @@ export const RecordDetailsFlex: FC<ViewProps> = styled.View`
 `;
 
 export const RecordMoney: FC<TextProps & { income: boolean }> = styled.Text`
-	color: ${({ income }: { income: boolean }) =>
-		income ? THEME.incomeColor : THEME.expenseColor};
+	color: ${({
+		income,
+		theme,
+	}: { income: boolean } & ThemePropsInterface): string =>
+		income ? theme.incomeColor : theme.expenseColor};
 	font-size: ${normalize(12)}px;
 	font-weight: bold;
 `;
 
 export const RecordDate: FC<TextProps> = styled.Text`
-	color: ${THEME.textColor};
+	color: ${({ theme }: ThemePropsInterface): string => theme.textColor};
 	font-size: ${normalize(9)}px;
 `;

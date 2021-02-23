@@ -5,18 +5,19 @@ import { FC } from 'react';
 import { TextProps, ViewProps } from 'react-native';
 import styled from 'styled-components/native';
 
-import { THEME } from '../../../global/theme';
 import normalize from '../../../utils/normalizeText';
+import { ThemePropsInterface } from '../../interfaces/theme-interface';
 
-export const CardTitleView: FC<ViewProps> = styled.View`
-	border-bottom-color: ${THEME.borderColor};
+export const CardTitleView: FC<ViewProps & ThemePropsInterface> = styled.View`
+	border-bottom-color: ${({ theme }: ThemePropsInterface): string =>
+		theme.borderColor};
 	border-bottom-width: 1px;
 	padding-vertical: 10px;
 	width: 100%;
 `;
 
-export const CardTitle: FC<TextProps> = styled.Text`
-	color: ${THEME.textColor};
+export const CardTitle: FC<TextProps & ThemePropsInterface> = styled.Text`
+	color: ${({ theme }: ThemePropsInterface): string => theme.textColor};
 	font-size: ${normalize(15)}px;
 	font-weight: bold;
 `;

@@ -4,11 +4,14 @@ import { SafeAreaViewProps } from 'react-native-safe-area-context';
 
 import styled from 'styled-components/native';
 
-import { THEME } from '../../../../global/theme';
+import { ThemePropsInterface } from '../../../../global/interfaces/theme-interface';
 
-export const RecordListSafeAreaView: FC<SafeAreaViewProps> = styled.SafeAreaView`
+export const RecordListSafeAreaView: FC<
+	SafeAreaViewProps & ThemePropsInterface
+> = styled.SafeAreaView`
 	flex: 1;
-	background-color: ${THEME.background};
+	background-color: ${({ theme }: ThemePropsInterface): string =>
+		theme.background};
 `;
 
 export const RecordListScrollView: FC<ScrollViewProps> = styled.ScrollView`

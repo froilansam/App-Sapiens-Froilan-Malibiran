@@ -3,6 +3,7 @@ import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import { NavigationInterface } from '../../interfaces/navigation-interface';
+import { ThemePropsInterface } from '../../interfaces/theme-interface';
 import { THEME } from '../../theme';
 
 import Header from '../header/header';
@@ -43,13 +44,17 @@ const Picker = ({ navigation, route }: NavigationInterface): JSX.Element => {
 				{choice.type === 'MaterialCommunityIcon' ? (
 					<MaterialCommunityIcons
 						name={choice.icon || ''}
-						color={THEME.textColor}
+						color={({ theme }: ThemePropsInterface): string =>
+							theme.iconColor
+						}
 						size={15}
 					/>
 				) : (
 					<FontAwesome5Icon
 						name={choice.icon || ''}
-						color={THEME.textColor}
+						color={({ theme }: ThemePropsInterface): string =>
+							theme.iconColor
+						}
 						size={15}
 					/>
 				)}

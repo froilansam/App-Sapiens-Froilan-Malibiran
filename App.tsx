@@ -1,17 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
-import RootNavigation from './src/navigation/root-navigation/root-navigation';
+import { ThemeProvider } from 'styled-components';
 
-export default function App() {
-	return (
-		<>
-			<StatusBar style="light" />
-			<RootNavigation />
-		</>
-	);
-}
+import RootNavigation from './src/navigation/root-navigation/root-navigation';
+import { observer } from 'mobx-react-lite';
+import { RootStoreContext } from './src/store/root-store';
+import { darkTheme, lightTheme } from './src/global/theme';
+
+const App = observer(
+	(): JSX.Element => {
+		const { themeStore } = useContext(RootStoreContext);
+		const { theme } = themeStore;
+
+		return (
+			<ThemeProvider theme={theme.isDay ? lightTheme : darkTheme}>
+				<StatusBar style="light" />
+				<RootNavigation />
+			</ThemeProvider>
+		);
+	},
+);
 
 const styles = StyleSheet.create({
 	container: {
@@ -21,3 +31,5 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 	},
 });
+
+export default App;

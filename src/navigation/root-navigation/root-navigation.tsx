@@ -7,6 +7,7 @@ import { DASHBOARD, PICKER, RECORD_LIST } from '../../global/route-names';
 import { THEME } from '../../global/theme';
 import Picker from '../../global/components/picker/picker';
 import RecordList from '../../screens/dashboard/record/record-list/record-list';
+import { useTheme } from 'styled-components';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ const Stack = createStackNavigator();
  * @memberof AppSapiens
  */
 const RootNavigation = (): JSX.Element => {
+	const theme = useTheme();
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
@@ -24,7 +26,7 @@ const RootNavigation = (): JSX.Element => {
 					options={{
 						headerTitle: '',
 						headerStyle: {
-							backgroundColor: THEME.background,
+							backgroundColor: theme.background,
 							shadowColor: 'transparent',
 						},
 					}}
@@ -35,7 +37,7 @@ const RootNavigation = (): JSX.Element => {
 					options={{
 						headerTitle: '',
 						headerStyle: {
-							backgroundColor: THEME.background,
+							backgroundColor: theme.background,
 							shadowColor: 'transparent',
 						},
 					}}
@@ -46,7 +48,7 @@ const RootNavigation = (): JSX.Element => {
 					options={{
 						headerTitle: '',
 						headerStyle: {
-							backgroundColor: THEME.background,
+							backgroundColor: theme.background,
 							shadowColor: 'transparent',
 						},
 					}}

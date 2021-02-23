@@ -16,7 +16,7 @@ import Records from './record/record';
  * @description Dashboard component
  * @memberof AppSapiens
  */
-const Dashboard = ({ navigation }: NavigationInterface) => {
+const Dashboard = ({ navigation }: NavigationInterface): JSX.Element => {
 	return (
 		<DashboardSafeAreaView>
 			<Header headerTitle={DASHBOARD} />
